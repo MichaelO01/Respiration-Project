@@ -1,0 +1,48 @@
+import java.awt.*;
+
+public class Particle
+{
+    private Rectangle rect;
+    private String name;
+    private Color color;
+
+    public Particle(Rectangle inRect, String inName, Color inColor)
+    {
+        rect = inRect;
+        name = inName;
+        color = inColor;
+    }
+
+    public String toString()
+    {
+        return name;
+    }
+
+    public void setX(int n)
+    {
+        rect = new Rectangle(n,rect.y,rect.width,rect.height);
+    }
+
+    public int getX()
+    {
+        return rect.x;
+    }
+
+    public void setY(int n)
+    {
+        rect = new Rectangle(rect.x,n,rect.width,rect.height);
+    }
+    
+    public int getY()
+    {
+        return rect.y;
+    }
+
+    public void draw(Graphics g)
+    {
+        g.setColor(Color.black);
+        g.drawOval(rect.x,rect.y,rect.width,rect.height);
+        g.setColor(color);
+        g.drawOval(rect.x,rect.y,rect.width,rect.height);
+    }
+}
