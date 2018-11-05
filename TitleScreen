@@ -1,0 +1,41 @@
+import java.awt.*;
+
+public class TitleScreen
+{
+    private Font font1;
+    private Font font2;
+    private Font font3;
+    
+    public TitleScreen()
+    {
+        font1 = new Font("bold",1,60);
+        font2 = new Font("bold",4,30);
+        font3 = new Font("italic",2,30);
+    }
+    
+    public String toString()
+    {
+        return "CELLULAR RESPIRATION";
+    }
+    
+    public void drawCenteredString(Graphics g, String text, Rectangle r, Font font)
+    {
+        FontMetrics metrics = g.getFontMetrics(font);
+        int x = r.x + (r.width - metrics.stringWidth(text)) / 2;
+        int y = r.y + ((r.height - metrics.getHeight()) / 2) + metrics.getAscent();
+        g.setFont(font);
+        g.drawString(text, x, y);
+    }
+    
+    public void drawScreen(Graphics g)
+    {
+        g.setColor(Color.lightGray);
+        g.fillRect(0,0,1300,600);
+        g.setColor(Color.red);
+        drawCenteredString(g,"CELLULAR RESPIRATION",new Rectangle(0,0,1300,100),font1);
+        g.setColor(Color.black);
+        drawCenteredString(g,"Michael Olsen and Patricia Olsen",new Rectangle(0,50,1300,150),font2);
+        drawCenteredString(g,"Click the buttons to view the corresponding processes.",new Rectangle(0,300,1300,100),font3);
+        
+    }
+}
