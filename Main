@@ -1,0 +1,61 @@
+import java.awt.*;
+import java.applet.Applet;
+import java.awt.event.*;
+import java.util.Random;
+import java.util.ArrayList;
+
+public class Main extends Applet implements Runnable, MouseListener
+{
+    Thread main = new Thread(this);
+    Image buffer;
+    Graphics bufferg;
+    TitleScreen screen = new TitleScreen();
+    GameButton glycoButton = new GameButton(new Rectangle(100,400,300,150),"GLYCOLYSIS");
+    GameButton krebsButton = new GameButton(new Rectangle(500,400,300,150),"KREBS CYCLE");
+    GameButton etcButton = new GameButton(new Rectangle(900,400,300,150),"ETC");
+
+    public void init()
+    {
+        resize(1300,600);
+        addMouseListener(this);
+
+        buffer = createImage(this.getWidth(), this.getHeight());
+        bufferg = buffer.getGraphics();
+        main.start();
+    }
+
+    public void run()
+    {
+        while(true)
+        {
+            try{main.sleep(35);} catch(Exception e) {}
+            repaint();
+        }
+    }
+
+    public void mouseClicked(MouseEvent e)
+    {
+    }
+
+    public void mousePressed(MouseEvent e){}
+
+    public void mouseReleased(MouseEvent e){}
+
+    public void mouseEntered(MouseEvent e){}
+
+    public void mouseExited(MouseEvent e){}
+    
+    public void paint(Graphics g)
+    {
+        screen.drawScreen(bufferg);
+        glycoButton.draw(bufferg,Color.darkGray,Color.white,new Font("bold",1,30));
+        krebsButton.draw(bufferg,Color.darkGray,Color.white,new Font("bold",1,30));
+        etcButton.draw(bufferg,Color.darkGray,Color.white,new Font("bold",1,30));
+        g.drawImage(buffer,0,0,this);
+    }
+
+    public void update(Graphics g)
+    {
+        paint(g);
+    }
+}
