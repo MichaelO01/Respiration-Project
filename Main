@@ -13,11 +13,21 @@ public class Main extends Applet implements Runnable, MouseListener
     GameButton glycoButton = new GameButton(new Rectangle(100,400,300,150),"GLYCOLYSIS");
     GameButton krebsButton = new GameButton(new Rectangle(500,400,300,150),"KREBS CYCLE");
     GameButton etcButton = new GameButton(new Rectangle(900,400,300,150),"ETC");
+    int[] x = new int[6];
+    int[] y = new int[6];
+    boolean title = true;
+    
 
     public void init()
     {
         resize(1300,600);
         addMouseListener(this);
+        
+        for(int n = 0; n < 6; n++)
+        {
+        x[n] = 200 + 150*n;
+        y[n] = 250;
+        }
 
         buffer = createImage(this.getWidth(), this.getHeight());
         bufferg = buffer.getGraphics();
@@ -31,6 +41,16 @@ public class Main extends Applet implements Runnable, MouseListener
             try{main.sleep(35);} catch(Exception e) {}
             repaint();
         }
+    }
+    
+    public void glycolysis()
+    {
+        Particle[] glucose = new Particle[6];
+        for(int n = 0; n < 6; n++)
+        {
+        glucose[n] = new Particle(new Rectangle(x[n],y[n],150,150),"C",Color.darkGray);
+        }
+        
     }
 
     public void mouseClicked(MouseEvent e)
