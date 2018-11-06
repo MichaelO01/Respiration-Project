@@ -1,0 +1,12 @@
+import java.awt.*;
+
+public class Glycolysis
+{
+
+public Glycolysis()
+{
+}
+
+public void show()
+{
+}
