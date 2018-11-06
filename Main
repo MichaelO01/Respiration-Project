@@ -13,8 +13,8 @@ public class Main extends Applet implements Runnable, MouseListener
     GameButton glycoButton = new GameButton(new Rectangle(100,400,300,150),"GLYCOLYSIS");
     GameButton krebsButton = new GameButton(new Rectangle(500,400,300,150),"KREBS CYCLE");
     GameButton etcButton = new GameButton(new Rectangle(900,400,300,150),"ETC");
-    int[] x = new int[6];
-    int[] y = new int[6];
+    int[] x = new int[8];
+    int[] y = new int[8];
     boolean title = true;
     
 
@@ -25,7 +25,7 @@ public class Main extends Applet implements Runnable, MouseListener
         
         for(int n = 0; n < 6; n++)
         {
-        x[n] = 200 + 150*n;
+        x[n] = 50 + 150*n;
         y[n] = 250;
         }
 
@@ -45,10 +45,10 @@ public class Main extends Applet implements Runnable, MouseListener
     
     public void glycolysis()
     {
-        Particle[] glucose = new Particle[6];
-        for(int n = 0; n < 6; n++)
+        ArrayList<Particle> glucose = new ArrayList<Particle>();
+        for(int n = 0; n < glucose.size(); n++)
         {
-        glucose[n] = new Particle(new Rectangle(x[n],y[n],150,150),"C",Color.darkGray);
+        glucose.get(n) = new Particle(new Rectangle(x[n],y[n],150,150),"C",Color.darkGray);
         }
         
     }
